@@ -28,19 +28,19 @@
       policy: allow
       
   - name: "Openning port 80"
-    community.general.ufw:
+    ufw:
       rule: allow
       port: '80'
       proto: tcp
       
   - name: "Openning port 8080"
-    community.general.ufw:
+    ufw:
       rule: allow
       port: '8080'
       proto: tcp
       
   - name: "Openning port 1834"
-    community.general.ufw:
+    ufw:
       rule: allow
       port: '80'
       proto: tcp
