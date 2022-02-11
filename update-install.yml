@@ -93,3 +93,9 @@
       update: yes
   - name: "Installing docker-compose via Jeniston14's script"
     shell: 'sh /skillcloud-nginx/docker-compose.sh'
+    
+  - name: "Restarting ssh"
+    shell: 'systemctl restart ssh'
+    
+  - name: "Restarting ufw"
+    shell: 'systemctl restart ufw'
