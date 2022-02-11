@@ -1,0 +1,12 @@
+- hosts: all
+  become: yes
+tasks:
+- name: "Updating via apt"
+  apt:
+    upgrade: yes
+    update_cache: true
+  
+- name: "Installing curl via apt"
+  apt:
+    name: curl
+    state: present
