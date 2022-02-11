@@ -79,7 +79,7 @@
     apt: 
       name: docker-ce
       state: latest
-      update_cahe: yes
+      update_cache: yes
       
   - name: "Installing python modules"
     pip:
