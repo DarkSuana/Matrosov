@@ -6,6 +6,7 @@
     default_container_name: docker
     default_container_image: ubuntu
     default_container_command: sleep 1dvars
+    custom_ssh_port: 1834
   tasks:
   - name: "Updating via apt"
     apt:
@@ -114,3 +115,60 @@
       pre_reboot_delay: 0
       post_reboot_delay: 330
       test_command: whoami
+      
+  - name: "Test default ssh port"
+      local_action: wait_for port=22 timeout=5 host=192.168.1.100
+      register: default_ssh
+      ignore_errors: true
+    
+  - name: set ansible_ssh_port to default
+      set_fact: ansible_ssh_port=22
+      when: default_ssh.elapsed < 5
+  
+  - name: test ssh on high port
+      local_action: wait_for port=1834 timeout=5 host=192.168.1.100
+      register: high_ssh
+      when: default_ssh.elapsed >= 5
+      ignore_errors: true
+  
+  - name: set ansible_ssh_port high
+      set_fact: ansible_ssh_port=1834
+      when: default_ssh.elapsed >= 5 and high_ssh.elapsed < 5
+      
+  - name: "Test default ssh port"
+      local_action: wait_for port=22 timeout=5 host=192.168.1.101
+      register: default_ssh
+      ignore_errors: true
+      
+  - name: set ansible_ssh_port to default
+      set_fact: ansible_ssh_port=22
+      when: default_ssh.elapsed < 5
+    
+  - name: test ssh on high port
+      local_action: wait_for port=1834 timeout=5 host=192.168.1.101
+      register: high_ssh
+      when: default_ssh.elapsed >= 5
+      ignore_errors: true
+  
+  - name: set ansible_ssh_port high
+    set_fact: ansible_ssh_port=1834
+    when: default_ssh.elapsed >= 5 and high_ssh.elapsed < 5
+      
+  - name: "Test default ssh port"
+    local_action: wait_for port=22 timeout=5 host=192.168.1.102
+    register: default_ssh
+    ignore_errors: true
+     
+  - name: set ansible_ssh_port to default
+    set_fact: ansible_ssh_port=22
+    when: default_ssh.elapsed < 5
+      
+  - name: test ssh on high port
+    local_action: wait_for port=1834 timeout=5 host=192.168.1.102
+    register: high_ssh
+    when: default_ssh.elapsed >= 5
+    ignore_errors: true
+      
+  - name: set ansible_ssh_port high
+    set_fact: ansible_ssh_port=1834
+    when: default_ssh.elapsed >= 5 and high_ssh.elapsed < 5
