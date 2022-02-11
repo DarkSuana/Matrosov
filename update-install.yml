@@ -18,7 +18,7 @@
       state: present
       
   - name: "Turning on UFW"
-     community.general.ufw:
+    community.general.ufw:
       state: enabled
       policy: allow
       
