@@ -53,10 +53,9 @@
     
   - name: "Installing required system packeges"
     apt:
-      name: {{ item }}
+      name: gpg apt-transport-https ca-certificates curl software-properties-common python3 python3-pip virtualenv python3-setuptools
       state: present
       update_cache: yes
-    loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'gpg', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
     
   - name: "Adding gpg key for docker"
     apt_key:
