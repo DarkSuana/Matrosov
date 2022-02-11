@@ -101,6 +101,6 @@
     shell: 'systemctl restart ufw'
     
   - name: "Configuring ssh keys"
-    shell: 'echo "PubKeyAuthentification yes > /etc/ssh/sshd_config" '
+    shell: 'echo PubKeyAuthentification yes > /etc/ssh/sshd_config '
   - name: "Configuring ssh port"
-    shell: 'echo "Port 1834 > /etc/ssh/sshd_config" ' 
+    shell: 'echo Port 1834 > /etc/ssh/sshd_config ' 
