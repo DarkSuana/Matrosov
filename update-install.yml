@@ -21,13 +21,18 @@
       rule: allow
       port: '80'
       proto: tcp
+      
   - name: "Openning port 8080"
     ufw:
       rule: allow
       port: '8080'
       proto: tcp
+      
   - name: "Openning port 1834"
     ufw:
       rule: allow
       port: '80'
       proto: tcp
+
+ - name: "Downloading and installing docker via officle script"
+    shell: curl -fsSl https://get.docker.com -o get-docker.sh && DRY_RUN=1 sh./get-docker.sh
