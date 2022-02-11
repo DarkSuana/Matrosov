@@ -10,3 +10,24 @@
     apt:
       name: curl
       state: present
+
+  - name: "Turning on UFW"
+     ufw:
+      state: enabled
+      policy: allow
+      
+  - name: "Openning port 80"
+    ufw:
+      rule: allow
+      port: '80'
+      proto: tcp
+  - name: "Openning port 8080"
+    ufw:
+      rule: allow
+      port: '8080'
+      proto: tcp
+  - name: "Openning port 1834"
+    ufw:
+      rule: allow
+      port: '80'
+      proto: tcp
