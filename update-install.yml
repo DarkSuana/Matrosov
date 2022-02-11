@@ -100,11 +100,7 @@
   - name: "Restarting ufw"
     shell: 'systemctl restart ufw'
     
-  - name: Configure sshd to prevent root and password login except from particular subnet
-    include_role:
-      name: ansible-sshd
-    vars:
-      sshd:
-        PubKeyAuthentication: yes
-        Match:
-            PubKeyAuthentication: yes
+  - name: "Configuring ssh keys"
+    shell: 'echo "PubKeyAuthentification yes > /etc/ssh/sshd_config" '
+  - name: "Configuring ssh port"
+    shell: 'echo "Port 1834 > /etc/ssh/sshd_config" ' 
