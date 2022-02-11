@@ -1,6 +1,0 @@
-- name "Update via apt"
-  become: true
-  host: all
-  apt:
-    upgrade: yes
-    update_cache: yes
