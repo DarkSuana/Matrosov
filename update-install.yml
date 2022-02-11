@@ -19,7 +19,7 @@
 
   - name: "Installing UFW via apt"
     apt:
-      name: ufs
+      name: ufw
       state: present
       
   - name: "Turning on UFW"
