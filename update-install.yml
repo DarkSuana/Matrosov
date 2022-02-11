@@ -7,6 +7,8 @@
     default_container_image: ubuntu
     default_container_command: sleep 1dvars
     custom_ssh_port: 1834
+  vars_files:
+    - privvars.yml
   tasks:
   - name: "Updating via apt"
     apt:
@@ -174,10 +176,3 @@
   - name: "Installing modules"
     pip:
       name: docker-compose
-      
-  - name: "Deploy nginx via docker-compose by docker-compose.yml"
-    docker_compose:
-      project_src: /skillcloud-nginx
-      files: 
-      - docker-compose.yml
-
