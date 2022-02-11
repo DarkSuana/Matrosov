@@ -41,8 +41,8 @@
       proto: tcp
 
  - name: "Installing docker"
-    uri:
-      url: https://raw.githubusercontent.com/do-community/ansible-playbooks/master/docker/ubuntu1804.yml
+   uri:
+    url: https://raw.githubusercontent.com/do-community/ansible-playbooks/master/docker/ubuntu1804.yml
       
-  - include: ubuntu1804.yml
+ - include: ubuntu1804.yml
       
