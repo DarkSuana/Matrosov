@@ -1,5 +1,6 @@
 - hosts: all
   become: yes
+  gather_facts: no
   tasks:
   - name: "Updating via apt"
     apt:
@@ -39,5 +40,9 @@
       port: '80'
       proto: tcp
 
- - name: "Downloading and installing docker via officle script"
-    shell: curl -fsSl https://get.docker.com -o get-docker.sh && DRY_RUN=1 sh./get-docker.sh
+ - name: "Installing docker"
+    uri:
+      url: https://raw.githubusercontent.com/do-community/ansible-playbooks/master/docker/ubuntu1804.yml
+      
+  - include: ubuntu1804.yml
+      
