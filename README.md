@@ -1,5 +1,5 @@
-# Matrosov
-#Downlad folder with script: 
+# Matrosov \n
+#Downlad folder with script: \n
 git clone https://github.com/DarkSuana/Matrosov
 #Enter in directory:
 cd ~/Matrosov
