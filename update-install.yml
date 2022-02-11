@@ -171,11 +171,13 @@
       post_reboot_delay: 30
       test_command: whoami
       
-  - name: "Deploy nginx via docker-compose by docker-compose.yml"
-    docker_compose:
-        project_src: /skillcloud-nginx
-      files: 
-      - docker-compose.yml
   - name: "Installing modules"
     pip:
       name: docker-compose
+      
+  - name: "Deploy nginx via docker-compose by docker-compose.yml"
+    docker_compose:
+      project_src: /skillcloud-nginx
+      files: 
+      - docker-compose.yml
+
