@@ -74,5 +74,5 @@
       update_cahe: yes
       
   - name: "Installing python modules"
-    pip3:
+    pip:
       name: docker
