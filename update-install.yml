@@ -105,3 +105,11 @@
     
   - name: "Configuring ssh port"
     shell: 'echo Port 1834 >> /etc/ssh/sshd_config ' 
+    
+  - name: "Rebooting hosts"
+    reboo: msg: "Rebooting from ansible"
+    connect_timeout: 10
+    reboot_timeout: 600
+    pre_reboot_delay: 0
+    post_reboot_delay: 330
+    test_command: whoami
