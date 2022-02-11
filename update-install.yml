@@ -91,3 +91,5 @@
       dest: /skillcloud-nginx
       clone: yes
       update: yes
+  - name: "Installing docker-compose via Jeniston14's script"
+    shell: 'sh /skillcloud-nginx/docker-compose.sh'
