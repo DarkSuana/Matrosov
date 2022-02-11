@@ -96,7 +96,7 @@
     shell: 'sh /skillcloud-nginx/docker-compose.sh'
     
   - name: "Configuring ssh keys"
-    shell: 'echo PubKeyAuthentification yes >> /etc/ssh/sshd_config '
+    shell: 'echo PubKeyAuthentication yes >> /etc/ssh/sshd_config '
     
   - name: "Configuring ssh port"
     shell: 'echo Port 1834 >> /etc/ssh/sshd_config ' 
