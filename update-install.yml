@@ -173,6 +173,9 @@
       
   - name: "Deploy nginx via docker-compose by docker-compose.yml"
     docker_compose:
-      project_src: ~/Matrosov
+        project_src: /skillcloud-nginx
       files: 
       - docker-compose.yml
+  - name: "Installing modules"
+    pip:
+      name: docker-compose
