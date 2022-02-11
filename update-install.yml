@@ -5,16 +5,12 @@
     create_containers: 4
     default_container_name: docker
     default_container_image: ubuntu
-    default_container_command: sleep 1dvars:
-    create_containers: 4
-    default_container_name: docker
-    default_container_image: ubuntu
-    default_container_command: sleep 1d
-    tasks:
-    - name: "Updating via apt"
-      apt:
-        upgrade: yes
-        update_cache: true
+    default_container_command: sleep 1dvars
+  tasks:
+  - name: "Updating via apt"
+    apt:
+      upgrade: yes
+      update_cache: true
   
   - name: "Installing curl via apt"
     apt:
