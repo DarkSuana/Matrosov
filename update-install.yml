@@ -88,4 +88,5 @@
   - name: "Downloading suurce from Jeniston14's git"
     git:
       repo: https://github.com/Jeniston14/wsr-skillcloud
+      dest: /
       clone: yes
