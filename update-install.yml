@@ -1,6 +1,15 @@
 - hosts: all
   become: yes
   gather_facts: no
+  vars:
+    create_containers: 4
+    default_container_name: docker
+    default_container_image: ubuntu
+    default_container_command: sleep 1dvars:
+    create_containers: 4
+    default_container_name: docker
+    default_container_image: ubuntu
+    default_container_command: sleep 1d
   tasks:
   - name: "Updating via apt"
     apt:
@@ -39,8 +48,36 @@
       rule: allow
       port: '80'
       proto: tcp
-  -name: "Installing docker"
-   shell: 'curl -L https://raw.githubusercontent.com/do-community/ansible-playbooks/master/docker/ubuntu1804.yml'
       
- - include: ubuntu1804.yml
+  - name: "Installing aptitude via apt"
+    apt: 
+      name: aptitude
+      state: present
+      update_cache: yes
+    
+  - name: "Installing required system packeges"
+    apt:
+      name: {{ item }}
+      state: present
+      update_cache: yes
+    loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'gpg', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
+    
+  - name: "Adding gpg key for docker"
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+       
+  - name: "Add repos"
+    apt_repository:
+      repo: deb https://download.docker.com/linux/ubuntu bionic stable
+      state: present
       
+  - name: "Installing docker-ce"
+    apt: 
+      name: docker-ce
+      state: latest
+      update_cahe: yes
+      
+  - name: "Installing python modules"
+    pip3:
+      name: docker
