@@ -42,7 +42,7 @@
   - name: "Openning port 1834"
     ufw:
       rule: allow
-      port: '80'
+      port: '1834'
       proto: tcp
       
   - name: "Installing aptitude via apt"
